@@ -1,7 +1,47 @@
-# Vue 3 + Vite
+# Проект: "Alex-testApp"
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+---
 
-## Recommended IDE Setup
+## Описание:
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Требования:
+
+- При клике на чекбокс уровня List должны выбираться все вложенные items. Если все вложенные items уже выбраны, то снимать с них выделение. Если выбран хотя бы один item, но не все, то отображать точку в чекбоксе родительского List'a.
+- Должна быть возможность изменять параметр "количество" у items (обычного <input> достаточно, значение должно быть >= 0);
+- Должна быть возможность изменять параметр "цвет" у items (<input type="color">);
+- Все действия на странице должны происходить без её перезагрузки;
+- Все изменяемые значения должны быть реактивными;
+- У каждого item изначально должны быть указаны параметры "количество"" и "цвет" по умолчанию (задать произвольно).
+
+Дополнительно:
+
+- Lists в левой панели должны сворачиваться и разворачиваться;
+- При клике на квадратик в правой панели он должен удаляться (уменьшаться параметр "количество" у соответствующего item).
+
+---
+
+#### Стэк технологий:
+
+Vue3, JS, CSS, Vite.
+
+---
+
+## Установка
+
+- `npm install` — установить зависимости
+- `npm run dev` — запуск сервера разработки
+- `npm run build` — сборка проекта
+
+---
+
+## Пример кода:
+
+```
+updateCheckbox() {
+      let arr = []
+      this.itemsModel.forEach(el => {
+        arr.push({ [el.id]: el.checked.filter(elem => elem.checked == true) })
+      })
+      this.$store.commit('updateItemsModal', arr)
+    },
+```
